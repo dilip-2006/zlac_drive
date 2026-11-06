@@ -1,0 +1,57 @@
+zlac_drive:
+  ros__parameters:
+    controller_model: "ZLAC8015D"
+    motor_model: "ZLLG50ASM200 V2.0"
+    serial_device: "/dev/serial/by-id/usb-1a86_USB_Single_Serial_5C65150306-if00"
+    baud_rate: 115200
+    data_bits: 8
+    stop_bits: 1
+    parity: "none"
+    slave_id: 1
+    slave_id_verified: true
+    timeout_ms: 100
+
+    protocol:
+      register_map_verified: true
+      velocity_mode_verified: true
+      enable_sequence_verified: true
+      velocity_command_units_verified: true
+      velocity_feedback_units_verified: true
+      stop_by_zero_velocity_verified: true
+      disable_sequence_verified: false
+      position_registers_verified: true
+      position_feedback_units_verified: false
+      fault_reset_sequence_verified: false
+
+    motor:
+      nominal_voltage_v: 24.0
+      rated_current_a: 5.0
+      peak_current_a: 15.0
+      rated_torque_nm: 3.0
+      peak_torque_nm: 9.0
+      rated_speed_rpm: 270.0
+      peak_speed_rpm: 350.0
+      pole_pairs: 10
+      # SOURCE_VERIFIED: ZLLG50ASM200 V2.0 motor parameter sheet.
+      encoder_lines: 4096
+      # CALIBRATION_REQUIRED: effective counts-per-wheel-revolution at
+      # the ZLAC8015D position registers. NOT the same as encoder_lines
+      # above - see the CRITICAL ENCODER RULE in zlac_drive/README.md.
+      # Leave at 0 / verified=false until physically measured; the
+      # hardware interface refuses to use position feedback otherwise.
+      encoder_counts_per_revolution: 0
+      encoder_counts_per_revolution_verified: false
+      gear_ratio: 1.0
+      gear_ratio_verified: false
+
+    direction:
+      left_motor_inverted: false
+      right_motor_inverted: false
+      verified: false
+
+    safety:
+      enabled: true
+      max_motor_speed_rpm: 350.0
+      max_motor_current_a: 5.0
+      stop_on_communication_failure: true
+      communication_failure_timeout_ms: 500

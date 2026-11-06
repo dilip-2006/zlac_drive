@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<library path="zlac_drive">
+  <class name="zlac_drive/ZlacSystemHardware"
+         type="zlac_drive::hardware::ZlacSystemHardware"
+         base_class_type="hardware_interface::SystemInterface">
+    <description>ros2_control hardware interface for a ZLAC8015D dual motor controller.</description>
+  </class>
+</library>
